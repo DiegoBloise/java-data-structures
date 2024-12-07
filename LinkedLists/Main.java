@@ -14,6 +14,8 @@ public class Main {
 
     list.addLast(8);
 
+    System.out.println(list.size());
+
     System.out.println(list.toString());
   }
 }

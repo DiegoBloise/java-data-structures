@@ -54,8 +54,22 @@ public class LinkedList {
 		return null;
 	}
 
-	public void size() {
+	public Integer size() {
+		Integer count = 0;
 
+		if (this.head == null) {
+			return count;
+		}
+
+		count++;
+
+		Node current = this.head;
+		while (current.getNext() != null) {
+			current = current.getNext();
+			count++;
+		}
+
+		return count;
 	}
 
 	public void clear() {
