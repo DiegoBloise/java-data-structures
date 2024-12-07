@@ -93,6 +93,14 @@ public class LinkedList {
 	}
 
 	public Boolean contains(Object item) {
+		Node current = this.head;
+		while (current != null) {
+			if (current.getData().equals(item)) {
+				return true;
+			}
+			current = current.getNext();
+		}
+
 		return false;
 	}
 

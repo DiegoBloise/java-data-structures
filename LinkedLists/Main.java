@@ -14,8 +14,12 @@ public class Main {
 
     list.addLast(8);
 
+    System.out.println("--------------");
+
     System.out.println("Size: " + list.size());
     System.out.println(list.toString());
+
+    System.out.println("--------------");
 
     System.out.println(list.get(-1));
     System.out.println(list.get(0));
@@ -26,11 +30,26 @@ public class Main {
     System.out.println(list.get(5));
     System.out.println(list.get(6));
 
+    System.out.println("--------------");
+
+    System.out.println(list.contains(-2));
+    System.out.println(list.contains(0));
+    System.out.println(list.contains(1));
+    System.out.println(list.contains(3));
+    System.out.println(list.contains(5));
+    System.out.println(list.contains(8));
+    System.out.println(list.contains(9));
+    System.out.println(list.contains("c"));
+
+    System.out.println("--------------");
+
     list.remove(4);
     list.clear();
 
     System.out.println("Size: " + list.size());
     System.out.println(list.toString());
+
+    System.out.println("--------------");
 
     // list.removeLast();
     // list.removeFirst();
