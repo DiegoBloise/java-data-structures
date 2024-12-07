@@ -97,6 +97,21 @@ public class LinkedList {
 	}
 
 	public Object get(Integer index) {
+		if (index < 0 || this.head == null) {
+			return null;
+		}
+
+		Integer count = 0;
+		Node current = this.head;
+
+		while (current != null) {
+			if (count == index) {
+				return current.getData();
+			}
+			current = current.getNext();
+			count++;
+		}
+
 		return null;
 	}
 
