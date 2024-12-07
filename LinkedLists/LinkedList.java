@@ -119,7 +119,7 @@ public class LinkedList {
 	}
 
 	public void clear() {
-
+		this.head = null;
 	}
 
 	private void setTail(Node node, Object item) {
