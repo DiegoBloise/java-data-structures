@@ -66,7 +66,30 @@ public class LinkedList {
 	}
 
 	public void remove(Integer index) {
+		if (index < 0 || this.head == null) {
+			return;
+		}
 
+		if (index == 0) {
+			this.head = this.head.getNext();
+			return;
+		}
+
+		Integer count = 0;
+		Node current = this.head;
+
+		while (current.getNext() != null) {
+			if (count == index - 1) {
+				if (current.getNext().getNext() == null) {
+					current.setNext(null);
+				} else {
+					current.setNext(current.getNext().getNext());
+				}
+				return;
+			}
+			current = current.getNext();
+			count++;
+		}
 	}
 
 	public Boolean contains(Object item) {
