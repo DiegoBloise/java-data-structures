@@ -1,36 +1,36 @@
 package LinkedLists;
 
-public class LinkedList {
+public class LinkedList<T> {
 
-	private Node head;
+	private Node<T> head;
 
-	public void addLast(Object item) {
+	public void addLast(T item) {
 		if (this.head == null) {
-			this.head = new Node(item);
+			this.head = new Node<>(item);
 			return;
 		}
 
-		Node current = this.head;
+		Node<T> current = this.head;
 		while (current.getNext() != null) {
 			current = current.getNext();
 		}
-		current.setNext(new Node(item));
+		current.setNext(new Node<>(item));
 	}
 
-	public void addLastRecursive(Object item) {
+	public void addLastRecursive(T item) {
 		if (this.head == null) {
-			this.head = new Node(item);
+			this.head = new Node<>(item);
 			return;
 		}
 
 		setTail(this.head, item);
 	}
 
-	public void addFirst(Object item) {
-		this.head = new Node(item, this.head);
+	public void addFirst(T item) {
+		this.head = new Node<>(item, this.head);
 	}
 
-	public void add(Integer index, Object item) {
+	public void add(int index, T item) {
 
 	}
 
@@ -44,7 +44,7 @@ public class LinkedList {
 			return;
 		}
 
-		Node current = this.head;
+		Node<T> current = this.head;
 		while (current.getNext().getNext() != null) {
 			current = current.getNext();
 		}
@@ -65,7 +65,7 @@ public class LinkedList {
 		this.head = null;
 	}
 
-	public void remove(Integer index) {
+	public void remove(int index) {
 		if (index < 0 || this.head == null) {
 			return;
 		}
@@ -75,8 +75,8 @@ public class LinkedList {
 			return;
 		}
 
-		Integer count = 0;
-		Node current = this.head;
+		int count = 0;
+		Node<T> current = this.head;
 
 		while (current.getNext() != null) {
 			if (count == index - 1) {
@@ -92,8 +92,8 @@ public class LinkedList {
 		}
 	}
 
-	public Boolean contains(Object item) {
-		Node current = this.head;
+	public boolean contains(T item) {
+		Node<T> current = this.head;
 		while (current != null) {
 			if (current.getData().equals(item)) {
 				return true;
@@ -104,13 +104,13 @@ public class LinkedList {
 		return false;
 	}
 
-	public Object get(Integer index) {
+	public T get(int index) {
 		if (index < 0 || this.head == null) {
 			return null;
 		}
 
-		Integer count = 0;
-		Node current = this.head;
+		int count = 0;
+		Node<T> current = this.head;
 
 		while (current != null) {
 			if (count == index) {
@@ -123,8 +123,8 @@ public class LinkedList {
 		return null;
 	}
 
-	public Integer size() {
-		Integer count = 0;
+	public int size() {
+		int count = 0;
 
 		if (this.head == null) {
 			return count;
@@ -132,7 +132,7 @@ public class LinkedList {
 
 		count++;
 
-		Node current = this.head;
+		Node<T> current = this.head;
 		while (current.getNext() != null) {
 			current = current.getNext();
 			count++;
@@ -145,13 +145,13 @@ public class LinkedList {
 		this.head = null;
 	}
 
-	private void setTail(Node node, Object item) {
+	private void setTail(Node<T> node, T item) {
 		if (node.getNext() != null) {
 			setTail(node.getNext(), item);
 			return;
 		}
 
-		node.setNext(new Node(item));
+		node.setNext(new Node<>(item));
 	}
 
 	public String toString() {
@@ -161,7 +161,7 @@ public class LinkedList {
 
 		StringBuilder str = new StringBuilder();
 
-		Node current = this.head;
+		Node<T> current = this.head;
 		while (current != null) {
 			str.append(current.getData());
 			if (current.getNext() != null) {

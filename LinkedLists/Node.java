@@ -1,36 +1,36 @@
 package LinkedLists;
 
-public class Node {
+public class Node<T> {
 
-	private Object data;
-	private Node next;
+	private T data;
+	private Node<T> next;
 
 	Node() {
 
 	}
 
-	Node(Object data) {
+	Node(T data) {
 		this.data = data;
 	}
 
-	Node(Object data, Node next) {
+	Node(T data, Node<T> next) {
 		this.data = data;
 		this.next = next;
 	}
 
-	public Object getData() {
+	public T getData() {
 		return data;
 	}
 
-	public void setData(Object data) {
+	public void setData(T data) {
 		this.data = data;
 	}
 
-	public Node getNext() {
+	public Node<T> getNext() {
 		return next;
 	}
 
-	public void setNext(Node node) {
+	public void setNext(Node<T> node) {
 		this.next = node;
 	}
 }
