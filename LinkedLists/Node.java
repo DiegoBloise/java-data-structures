@@ -13,6 +13,11 @@ public class Node {
 		this.data = data;
 	}
 
+	Node(Object data, Node next) {
+		this.data = data;
+		this.next = next;
+	}
+
 	public Object getData() {
 		return data;
 	}

@@ -9,6 +9,11 @@ public class Main {
     list.addLast(2);
     list.addLast(3);
 
+    list.addFirst(4);
+    list.addFirst(5);
+
+    list.addLast(8);
+
     System.out.println(list.toString());
   }
 }

@@ -27,7 +27,7 @@ public class LinkedList {
 	}
 
 	public void addFirst(Object item) {
-		
+		this.head = new Node(item, this.head);
 	}
 
 	public void add(Integer index, Object item) {
