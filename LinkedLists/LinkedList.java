@@ -35,7 +35,21 @@ public class LinkedList {
 	}
 
 	public void removeLast() {
+		if (this.head == null) {
+			return;
+		}
 
+		if (this.head.getNext() == null) {
+			this.head = null;
+			return;
+		}
+
+		Node current = this.head;
+		while (current.getNext().getNext() != null) {
+			current = current.getNext();
+		}
+
+		current.setNext(null);
 	}
 
 	public void removeFirst() {
