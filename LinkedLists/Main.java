@@ -18,6 +18,7 @@ public class Main {
     System.out.println(list.toString());
 
     list.removeLast();
+    list.removeFirst();
 
     System.out.println("Size: " + list.size());
     System.out.println(list.toString());

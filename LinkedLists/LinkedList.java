@@ -53,7 +53,16 @@ public class LinkedList {
 	}
 
 	public void removeFirst() {
+		if (this.head == null) {
+			return;
+		}
 
+		if (this.head.getNext() != null) {
+			this.head = this.head.getNext();
+			return;
+		}
+
+		this.head = null;
 	}
 
 	public void remove(Integer index) {
