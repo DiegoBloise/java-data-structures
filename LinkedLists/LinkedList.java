@@ -1,37 +1,66 @@
 package LinkedLists;
 
+import java.util.Objects;
+
 public class LinkedList<T> {
 
 	private Node<T> head;
+	private int size = 0;
 
 	public void addLast(T item) {
 		if (this.head == null) {
 			this.head = new Node<>(item);
-			return;
+		} else {
+			Node<T> current = this.head;
+			while (current.getNext() != null) {
+				current = current.getNext();
+			}
+			current.setNext(new Node<>(item));
 		}
-
-		Node<T> current = this.head;
-		while (current.getNext() != null) {
-			current = current.getNext();
-		}
-		current.setNext(new Node<>(item));
+		this.size++;
 	}
 
 	public void addLastRecursive(T item) {
 		if (this.head == null) {
 			this.head = new Node<>(item);
-			return;
+			this.size++;
+		} else {
+			setTail(this.head, item);
 		}
-
-		setTail(this.head, item);
 	}
 
 	public void addFirst(T item) {
 		this.head = new Node<>(item, this.head);
+		this.size++;
 	}
 
 	public void add(int index, T item) {
+		if (index < 0 || index > this.size()) {
+			return;
+		}
 
+		if (index == this.size()) {
+			this.addLast(item);
+			return;
+		}
+
+		if (index == 0 || this.head == null) {
+			this.addFirst(item);
+			return;
+		}
+
+		int count = 0;
+		Node<T> current = this.head;
+
+		while (current != null) {
+			if (count == index - 1) {
+				current.setNext(new Node<>(item, current.getNext()));
+				this.size++;
+				return;
+			}
+			current = current.getNext();
+			count++;
+		}
 	}
 
 	public void removeLast() {
@@ -41,6 +70,7 @@ public class LinkedList<T> {
 
 		if (this.head.getNext() == null) {
 			this.head = null;
+			this.size--;
 			return;
 		}
 
@@ -50,6 +80,7 @@ public class LinkedList<T> {
 		}
 
 		current.setNext(null);
+		this.size--;
 	}
 
 	public void removeFirst() {
@@ -59,19 +90,20 @@ public class LinkedList<T> {
 
 		if (this.head.getNext() != null) {
 			this.head = this.head.getNext();
-			return;
+		} else {
+			this.head = null;
 		}
 
-		this.head = null;
+		this.size--;
 	}
 
 	public void remove(int index) {
-		if (index < 0 || this.head == null) {
+		if (index < 0 || index >= this.size() || this.head == null) {
 			return;
 		}
 
 		if (index == 0) {
-			this.head = this.head.getNext();
+			this.removeFirst();
 			return;
 		}
 
@@ -80,11 +112,8 @@ public class LinkedList<T> {
 
 		while (current.getNext() != null) {
 			if (count == index - 1) {
-				if (current.getNext().getNext() == null) {
-					current.setNext(null);
-				} else {
-					current.setNext(current.getNext().getNext());
-				}
+				current.setNext(current.getNext().getNext());
+				this.size--;
 				return;
 			}
 			current = current.getNext();
@@ -95,7 +124,7 @@ public class LinkedList<T> {
 	public boolean contains(T item) {
 		Node<T> current = this.head;
 		while (current != null) {
-			if (current.getData().equals(item)) {
+			if (Objects.equals(current.getData(), item)) {
 				return true;
 			}
 			current = current.getNext();
@@ -105,13 +134,13 @@ public class LinkedList<T> {
 	}
 
 	public T get(int index) {
-		if (index < 0 || this.head == null) {
+		if (index < 0 || index >= this.size() || this.head == null) {
 			return null;
 		}
 
 		int count = 0;
-		Node<T> current = this.head;
 
+		Node<T> current = this.head;
 		while (current != null) {
 			if (count == index) {
 				return current.getData();
@@ -124,25 +153,12 @@ public class LinkedList<T> {
 	}
 
 	public int size() {
-		int count = 0;
-
-		if (this.head == null) {
-			return count;
-		}
-
-		count++;
-
-		Node<T> current = this.head;
-		while (current.getNext() != null) {
-			current = current.getNext();
-			count++;
-		}
-
-		return count;
+		return this.size;
 	}
 
 	public void clear() {
 		this.head = null;
+		this.size = 0;
 	}
 
 	private void setTail(Node<T> node, T item) {
@@ -152,6 +168,7 @@ public class LinkedList<T> {
 		}
 
 		node.setNext(new Node<>(item));
+		this.size++;
 	}
 
 	public String toString() {
