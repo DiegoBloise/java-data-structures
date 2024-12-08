@@ -23,10 +23,10 @@ public class LinkedList<T> {
 	public void addLastRecursive(T item) {
 		if (this.head == null) {
 			this.head = new Node<>(item);
-			this.size++;
 		} else {
 			setTail(this.head, item);
 		}
+		this.size++;
 	}
 
 	public void addFirst(T item) {
@@ -166,9 +166,7 @@ public class LinkedList<T> {
 			setTail(node.getNext(), item);
 			return;
 		}
-
 		node.setNext(new Node<>(item));
-		this.size++;
 	}
 
 	public String toString() {
