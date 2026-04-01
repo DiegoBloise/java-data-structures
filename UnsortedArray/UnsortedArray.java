@@ -2,8 +2,8 @@ package UnsortedArray;
 
 public class UnsortedArray<T> {
 
-    private T[] array;
-    private int size;
+    protected T[] array;
+    protected int size;
 
     @SuppressWarnings("unchecked")
     public UnsortedArray(int capacity) {
