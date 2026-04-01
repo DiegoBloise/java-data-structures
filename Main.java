@@ -1,14 +1,31 @@
 
+import Arrays.SortedArray;
+import Arrays.UnsortedArray;
 import LinkedLists.LinkedList;
-import UnsortedArray.UnsortedArray;
 
 public class Main {
 
     public static void main(String[] args) {
-        unsortedArrayTests();
+        // linkedListTest();
+        // unsortedArrayTest();
+        sortedArrayTest();
     }
 
-    public static void unsortedArrayTests() {
+    public static void sortedArrayTest() {
+        SortedArray sort = new SortedArray(5);
+
+        sort.add(5);
+        sort.add(8);
+        sort.add(3);
+        sort.add(1);
+        sort.add(9);
+        sort.add(12);
+        sort.add(10);
+
+        System.out.println(sort.toString());
+    }
+
+    public static void unsortedArrayTest() {
         UnsortedArray<Integer> unsortedArray = new UnsortedArray<>(5);
 
         unsortedArray.add(2);
@@ -65,7 +82,7 @@ public class Main {
         System.out.println("Valid index (" + validIndex + ")....: " + unsortedArray.toString());
     }
 
-    public static void linkedListTests() {
+    public static void linkedListTest() {
         LinkedList<Integer> list = new LinkedList<>();
 
         list.addLast(1);
